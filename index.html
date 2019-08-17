@@ -366,11 +366,12 @@
             </div>
             <br /> <br />
             <div id="formorthopedics">
-                <input type="hidden" value="כאבים ב" id="orthopedicV" name="orthopedicV" />
+                <input type="hidden" value= ""  id="orthopedicV" name="orthopedicV" />
                        <h1>בעיות אורטופדיות</h1>
                 כמה זמן?
                 <input type="text" id="orthopedicstime" name="orthopedic[]" value="" size="1" />ימים  <br />
-                <input type="text" id="orthopedicsplace" name="orthopedic[]" value=""  placeholder="מיקום הכאב" /> <br />
+                <input type="hidden" value="" id="orthopedicsplace" name="orthopedic[]" />
+                <input type="text" id="orthopedicsplace" name="orthopedicNO[]" value=""  placeholder="מיקום הכאב" onchange="orthopedicV.value = this.value;" /> <br />
 
                 <input type="checkbox" id="trauma" name="orthopedic[]" value="חבלה" />חבלה <br />
                 <input type="checkbox" id="swelling" name="orthopedic[]" value="נפיחות" /> נפיחות <br />
