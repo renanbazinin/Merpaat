@@ -101,9 +101,9 @@
             TrueText = "";
            
             if (window.getComputedStyle(document.getElementById(FormProblem)).display == "block") {               
-                TheProText += document.getElementById(ProblemValue).value + " מזה";
+                TheProText += document.getElementById(ProblemValue).value + " מזה ";
                 TheProText += document.getElementsByName(Problem)[0].value + " ימים ";
-                TheProText += document.getElementsByName(Problem)[1].value + ", ";
+                TheProText += document.getElementsByName(Problem)[1].value + " ";
                 TrueText = "מלווה ב- ";
                 FalseText = "שולל- ";
                 for (var i = 2; i < document.getElementsByName(Problem).length; i++) {
@@ -123,7 +123,8 @@
                     }
                     else //if (document.getElementsByName("headache[]")[i].type == "text") {
                     {
-                        TrueText += document.getElementsByName(Problem)[i].value + ", ";
+                        if (document.getElementsByName(Problem)[i].value != "")
+                        TrueText += document.getElementsByName(Problem)[i].value + ",";
                     }
                      
 
@@ -247,7 +248,7 @@
         </form>
     </div>
     <div>
-        <input type="radio" name="gander" id="male" value="בן" onchange="gendertext()"  checked ="checked" />בן
+        <input type="radio" name="gander" id="male" value="בן" onchange="gendertext()"  checked ="checked"/>בן
         <input type="radio" name="gander" id="female" value="בת" onchange="gendertext()"/>בת
         &nbsp;&nbsp; &nbsp;&nbsp;
         פרופיל:
