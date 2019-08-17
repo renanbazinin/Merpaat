@@ -282,25 +282,67 @@
 
             <div id="formheadaches" >
                 <input type="hidden" value="כאב ראש" id="headacheV"/> 
-                <h1 > כאבי ראש</h1> <b></b>
-                כמה זמן?
-                <input type="text" id="headachetime" name="headache[]" value="" size="1"/>ימים  <br /> 
-				<input type="text" id="headacheplace" name="headache[]" value="" placeholder="מיקום הכאב" /> <br />
-                <input type="checkbox" id="trauma" name="headache[]" value="חבלה"> חבלה<br>
-                <input type="checkbox" id="eyesdisorders" name="headache[]" value="טשטוש בראייה"> טשטוש בראייה<br>
-                <input type="checkbox" id="nausea" name="headache[]" value="בחילות"> בחילות<br>
-                <input type="checkbox" id="vomiting" name="headache[]" value="הקאות" onchange="OnlyWithVomit()"> הקאות<br>
+                <table align="center">
 
-                <b id="vomitingbar" style="display:none">
-                    מספר הקאות
-                    <br />
-                    <input type="range" id="amountvomiting" name="headache[]" min="0" max="20" value="0" onchange="updateTextInput(this.value, 'textInputvomit','vomitingbar','vomiting');" /><br>
-                    <input type="text" id="textInputvomit" value="0" >
-                    <select id="bloodyvomit" name="headache[]"><option value="שולל קיא דמי" id="nonebloddy">שולל דמי</option><option value="מלווה קיא דמי" id="bloddy">קיא דמי</option></select>
-                </b>
+                    <tr>
+                        <td>
+                            <h1> כאבי ראש</h1>
+                        </td>
+                    </tr>
 
-                <br><br>
+                    <tr>
+                        <td>
+                            כמה זמן?
+                            <input type="text" id="headachetime" name="headache[]" value="" size="1" />ימים
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" id="headacheplace" name="headache[]" value="" placeholder="מיקום הכאב" />
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="trauma" name="headache[]" value="חבלה"> חבלה
+                        </td>
+                        <td>
+                            <input type="text" id="traumaD" name="headache[]" value="" placeholder="פירוט אם יש" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td> <input type="checkbox" id="eyesdisorders" name="headache[]" value="טשטוש בראייה">טשטוש בראייה </td>
+                        <td><input type="text" id="eyesdisordersD" name="headache[]" value="" placeholder="פירוט אם יש" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="nausea" name="headache[]" value="בחילות"> בחילות
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="vomiting" name="headache[]" value="הקאות" onchange="OnlyWithVomit()"> הקאות
+                        </td>
+                    </tr>
+                    
+                    
+                    <tr id="vomitingbar" style="display:none">
+                        <td>
+                            מספר הקאות
+                            <input type="range" id="amountvomiting" name="headache[]" min="0" max="20" value="0" onchange="updateTextInput(this.value, 'textInputvomit','vomitingbar','vomiting');" /> <br />
+                        
+                    
+                  
+                        <input type="text" id="textInputvomit" value="0" size="1">
+
+                        <select id="bloodyvomit" name="headache[]"><option value="שולל קיא דמי" id="nonebloddy">שולל דמי</option><option value="מלווה קיא דמי" id="bloddy">קיא דמי</option></select>
+                        </td>
+                    </tr>
+                    
+
+                </table>
             </div>
             <div id="formstomachaches">
                 <input type="hidden" value="כאבי בטן" id="stomachacheV" name="stomachacheV"/> 
