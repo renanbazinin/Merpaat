@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function StartClean() {
+            document.getElementById("formstomachaches").style.display = "none";
+            document.getElementById("formheadaches").style.display = "none";
+        }
+        function AskQuestions(TheProblem) {
+                        
+            document.getElementById("formstomachaches").style.display = "none";
+            document.getElementById("formheadaches").style.display = "none";
+
+            var items = document.getElementsByName('TheProblems');
+            var selectedItems = [""];
+            for (var i = 0; i < items.length; i++) {
+                if (items[i].type == 'checkbox' && items[i].checked == true)
+                    selectedItems.push(items[i].value)
+            }
+            selectedItems.shift();
+            //alert(selectedItems)
+
+
+            for (var i = 0; i < selectedItems.length; i++) {
+                document.getElementById("form" + selectedItems[i]+ "s").style.display = "block";
+            }
+        }
+
+        function updateTextInput(val, Id, Btag, disapear) {
+
+            document.getElementById(Id).value = val;
+            if(val == 0)
+            {
+                document.getElementById(Id).value = 0;
+                document.getElementById(disapear).checked = false;
+                Btag.style.display = "none";
+                Id.value = "0";
+                this.id.value = "0";
+
+            }
+        }
+
+
+
+        function OnlyWithVomit() {
+            document.getElementById("nausea").checked = true;
+            var checkBox = document.getElementById("vomiting");
+            var textid = document.getElementById("vomitingbar")
+
+            if (document.getElementById('vomiting').checked) {
+                textid.style.display = "block";
+            } else {
+                textid.style.display = "none";
+                textInputvomit.value = "0";
+                amountvomiting.value = "0";
+            }
+        }
+
+        function OnlyWithDiarrhea() {
+            
+                var checkBox = document.getElementById("diarrhea");
+                var textid = document.getElementById("diarrheabar")
+
+                if (document.getElementById('diarrhea').checked) {
+                    textid.style.display = "block";
+                } else {
+                    textid.style.display = "none";
+                    textInputdiarrhea.value = "0";
+                    amountdiarrhea.value = "0";
+                }
+            
+        } 
+
+        
+        function validateFormOnSubmit() {
+            var AllText = ""
+            alert("inputs have " + Form2.length)
+            var chackcount = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            alert("chacked " + chackcount)
+
+            for (var i = 0; i < chackcount; i++) {
+
+                var temp = document.querySelectorAll('input[name=headache]')[i].value;
+                AllText = "מלווה ב " + temp;
+                alert("values = " + temp)
+
+            }
+   
+        }
+
+
+        function Protext(Problem) {
+            var ProblemValue = Problem + "V";
+            var FormProblem = "form" + Problem +"s";
+            var Problem = Problem + "[]";
+
+            FalseText = "";
+            TrueText = "";
+            if (window.getComputedStyle(document.getElementById(FormProblem)).display == "block") {
+                TheProText = "החייל מתלונן על "  
+                
+                TheProText += document.getElementById(ProblemValue).value + " מזה";
+                TheProText += document.getElementsByName(Problem)[0].value + " ימים ";
+                TheProText += document.getElementsByName(Problem)[1].value + ", ";
+                TrueText = "מלווה ב- ";
+                FalseText = "שולל- ";
+                for (var i = 2; i < document.getElementsByName(Problem).length; i++) {
+                    //alert(TrueText + "\n" + FalseText);
+
+                    if (document.getElementsByName(Problem)[i].checked == true) {
+
+                        TrueText += document.getElementsByName(Problem)[i].value + ","
+
+                    }
+
+
+                    else if (document.getElementsByName(Problem)[i].checked == false && document.getElementsByName(Problem)[i].type == "checkbox") {
+                        FalseText += document.getElementsByName(Problem)[i].value + ", ";
+                        if (document.getElementsByName(Problem)[i].value == "הקאות" || document.getElementsByName(Problem)[i].value == "שלשולים")
+                            i += 2;
+                    }
+                    else //if (document.getElementsByName("headache[]")[i].type == "text") {
+                    {
+                        TrueText += document.getElementsByName(Problem)[i].value + ", ";
+                    }
+                     
+
+
+                }
+
+                return TheBigText = TheProText + TrueText + "\n" + FalseText;
+
+            }
+
+
+
+        }
+        
+        function GenerateText() {
+            TheBigText = ""
+            //alert("hello")
+
+            if (document.getElementById("male").checked) {
+                TheBigText += "בן " + document.getElementById("age").value + ",";
+            } 
+            if (document.getElementById("female").checked) {
+                TheBigText += "בת " + document.getElementById("age").value + ",";
+            }
+            TheBigText += " פרופיל " + document.getElementById("profiles").value +",";
+            if (document.getElementById("allergies").value != "") {
+                TheBigText += " ידועה רגישות ל- " + document.getElementById("allergies").value +" ";
+            }
+            else {
+                TheBigText += " לא ידועה רגישות לתרופות, ";
+            }
+            TheBigText += document.getElementById("issomker").value + ". \n";
+            // והתלונות הם:
+			
+			//// כאב ראש כאב ראש כאב ראש
+            //if (window.getComputedStyle(document.getElementById("formheadaches")).display == "block") {
+            //    TheBigText += "החייל מתלונן על כאבי ראש, מזה "
+            //    TheBigText += document.getElementsByName("headache[]")[0].value + " ימים ";
+			//	TheBigText+=document.getElementsByName("headache[]")[1].value + ", ";
+            //    TrueText = "מלווה ב- ";
+            //    FalseText = "שולל- ";
+            //    for (var i = 2; i < document.getElementsByName("headache[]").length; i++) {
+
+
+            //        if (document.getElementsByName("headache[]")[i].checked == true) {
+
+            //            TrueText += document.getElementsByName("headache[]")[i].value + ",";
+            //            if (document.getElementsByName("headache[]")[i].value == "הקאות") {
+            //                i++;
+            //                TrueText += "*" + document.getElementsByName("headache[]")[i].value + " הקאות, "
+            //                TrueText += document.getElementById("bloodyvomit").value + ".";
+            //            }
+                        
+            //        }
+
+
+            //        if (document.getElementsByName("headache[]")[i].checked == false && document.getElementsByName("headache[]")[i].type == "checkbox") {
+            //            FalseText += document.getElementsByName("headache[]")[i].value + ", ";
+            //        }
+			//		else if(document.getElementsByName("headache[]")[i].type == "text"){
+			//			TrueText+=document.getElementsByName("headache[]")[i].value + ", ";
+			//		}
+
+
+            //    }
+
+            //    TheBigText += TrueText + "\n" + FalseText;
+                
+            //}
+             
+            TheBigText += Protext("headache");
+            
+            if(TheBigText != ""){
+                TheBigText += "\n"
+                TheBigText += "בנוסף החייל מתלונן על "
+                
+            }
+
+            TheBigText += Protext("stomachache");
+
+            
+            document.getElementById("TextToCopy").value = TheBigText
+        //End of the text
+        }
+        function gendertext() {
+            if (document.getElementById("male").checked) {
+                document.getElementById("nonesomker").value = "לא מעשן"
+                document.getElementById("somker").value = "מעשן"
+            }
+            if (document.getElementById("female").checked) {
+                document.getElementById("nonesomker").value = "לא מעשנת"
+                document.getElementById("somker").value = "מעשנת"
+            }
+
+        }
+
+    </script>
+
+    <title></title>
+	<meta charset="utf-8" />
+    <style>
+        body {
+            background-color: powderblue;
+            text-align:center
+        }
+
+        h1 {
+            color: blue;
+            text-align:center
+        }
+
+        p,b {
+            color: red;
+            text-align:center;
+            font-weight:normal;
+        }
+    </style>
+</head>
+<body onload="StartClean()" dir="rtl">
+    <h1>העצה בלחיצה של מרפאת היחידה</h1>
+
+    <div style="font-size:30px">
+        <form action="#" id="Form1" onsubmit="return validateFormOnSubmit(this);">
+            התלונה:<br>
+
+            <input type="checkbox" id="headache" value="headache" name="TheProblems" onchange="AskQuestions(this)" /> כאבי ראש <br />
+            <input type="checkbox" id="headache" value="stomachache" name="TheProblems" onchange="AskQuestions(this)" /> כאבי בטן <br />
+            <input type="checkbox" id="headache" value="opel" name="TheProblems" /> אופל <br />
+            <input type="checkbox" id="headache" value="audi" name="TheProblems" />אאודי <br />
+            <br /><br />
+        </form>
+    </div>
+    <div>
+        <input type="radio" name="gander" id="male" value="בן" onchange="gendertext()"/>בן
+        <input type="radio" name="gander" id="female" value="בת" onchange="gendertext()"/>בת
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        פרופיל:
+        <select id="profiles"><option id="97" value="97">97</option>  <option id="82" value="82">82</option>   <option id="72" value="72">72</option>  <option id="64" value="64">64</option>  <option id="45" value="45">45</option>  </select>
+
+
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        גיל
+        <select name="age" id="age">
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+        </select>
+        &nbsp;&nbsp; &nbsp;&nbsp;
+        אלרגיות:
+        <input type="text" name="allergies" id="allergies" value="" />
+        <select id="issomker">  <option id="nonesomker" value="לא מעשן"> לא מעשן </option>  <option  id="somker"value="מעשן">מעשן</option></select>
+        
+
+    </div>
+        <br /><br />
+    <div id="sum">
+        <form action="#" id="SumAll" onsubmit="return validateFormOnSubmit(this);" style="display:block">
+
+            <div id="formheadaches" >
+                <input type="hidden" value="כאב ראש" id="headacheV"/> 
+                <h1 > כאבי ראש</h1> <b></b>
+                כמה זמן?
+                <input type="text" id="headachetime" name="headache[]" value="" size="1"/>ימים  <br /> 
+				<input type="text" id="headacheplace" name="headache[]" value="ממוקד ב" /> <br />
+                <input type="checkbox" id="trauma" name="headache[]" value="חבלה"> חבלה<br>
+                <input type="checkbox" id="eyesdisorders" name="headache[]" value="טשטוש בראייה"> טשטוש בראייה<br>
+                <input type="checkbox" id="nausea" name="headache[]" value="בחילות"> בחילות<br>
+                <input type="checkbox" id="vomiting" name="headache[]" value="הקאות" onchange="OnlyWithVomit()"> הקאות<br>
+
+                <b id="vomitingbar" style="display:none">
+                    מספר הקאות
+                    <br />
+                    <input type="range" id="amountvomiting" name="headache[]" min="0" max="20" value="0" onchange="updateTextInput(this.value, 'textInputvomit','vomitingbar','vomiting');" /><br>
+                    <input type="text" id="textInputvomit" value="0" >
+                    <select id="bloodyvomit" name="headache[]"><option value="שולל קיא דמי" id="nonebloddy">שולל דמי</option><option value="מלווה קיא דמי" id="bloddy">קיא דמי</option></select>
+                </b>
+
+                <br><br>
+
+            </div>
+            <div id="formstomachaches">
+                <input type="hidden" value="כאבי בטן" id="stomachacheV" name="stomachacheV"/> 
+                <h1> כאבי בטן</h1> 
+                כמה זמן?
+                <input type="text" id="stomachachetime" name="stomachache[]" value="" size="1" />ימים  <br /> 
+                <input type="text" id="stomaacheplace" name="stomachache[]" value="ממוקד ב" /> <br />
+
+                <input type="checkbox" id="trauma" name="stomachache[]" value="חבלה" />חבלה <br />
+                <input type="checkbox" id="diarrhea" name="stomachache[]" value="שלשולים" onchange="OnlyWithDiarrhea()"> שלשולים<br>
+                <br />
+                
+                <br />
+                <b id="diarrheabar" style="display:none">
+                    מספר שלשולים
+                    <input type="range" id="amountdiarrhea" name="stomachache[]" min="0" max="20" value="0" onchange="updateTextInput(this.value,'textInputdiarrhea');" /><br>
+                    <input type="text" id="textInputdiarrhea" value="0">
+                </b>
+
+            </div>
+            <br /><br />
+            <input type="button" onclick="GenerateText()" value="תיצור"/>
+        </form>
+    </div>
+<div>
+    <br /> <br /><br /><br />
+    <textarea rows="6" cols="125" id="TextToCopy" dir="rtl"></textarea>
+
+
+</div>
+
+    <br /><br /><br />
+</body>
+
+</html>
+
