@@ -2,6 +2,28 @@
 <html>
 <head>
     <script>
+	    
+	var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function(){
+            var text = reader.result;
+            var newtext = text.toString().split("\n")
+            for (var i = 0; i < newtext.length; i++) {
+
+                alert(newtext[i]);
+                
+            }
+
+          var node = document.getElementById('output');
+          node.innerText = text;
+          console.log(reader.result.substring(0, 200));
+        };
+        reader.readAsText(input.files[0]);
+      };
+	    
+	    
         function StartClean() {
             document.getElementById("formstomachaches").style.display = "none";
             document.getElementById("formheadaches").style.display = "none";
@@ -234,6 +256,11 @@
     </style>
 </head>
 <body onload="StartClean()" dir="rtl">
+	
+	<input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <div id='output'>
+        ...
+    </div>
     <h1>העצה בלחיצה של מרפאת היחידה</h1>
   <a href="index2.html">Visit Other</a>	
     <div style="font-size:30px">
