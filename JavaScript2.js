@@ -1,4 +1,4 @@
-﻿/// <reference path="JavaScript.js" />
+/// <reference path="JavaScript.js" />
 
 
       var btn = document.getElementById("mybtn");
@@ -33,14 +33,14 @@ for (var i = 0; i < Problems.Tlonot.length; i++) {
     HText += "</button>";
 }
 
-HText += "<div><button style='background-color:#4c7aaf' class='picktlon' id='Tlonbtn-1' type ='button'>התחל</button></div>";
+HText += "<div><button style='background-color:#4c7aaf' class='picktlon' id='Tlonbtn-1' type ='button' onclick='GlobalAdd(0)'>התחל</button></div>";
 for (var i = 0; i < mydata.Shelot.length; i++) {
  
     HText += "<div class='Shela' id='Shela" + i + "'>";
 
     HText += "<div class='textShela' id ='textShela'>מלווה ב"+mydata.Shelot[i].shela + "?</div>";
     
-    HText += "<button onclick='GlobalAdd(\"" + mydata.Shelot[i].shela + "\")' class='btncheck' id='melo' type ='button'>";
+    HText += "<button class='btncheck' id='melo' type ='button' onclick='GlobalAdd("+(i+1)+")'>";
     HText += "מלווה"
     HText += "</button>";
 
@@ -73,6 +73,22 @@ var melobtn = document.getElementById("melo");
 var skipbtn = document.getElementById("skip");
 var sholbtn = document.getElementById("shol");
 
-function GlobalAdd(val) {
-    alert(val);
+function GlobalAdd(Index) {
+    for (var i = 0; i < mydata.Shelot.length; i++) {
+
+        document.getElementById("Shela" + i).style.display = "none";
+
+    }
+
+    if (Index == 0) {
+        document.getElementById("Shela" + Index).style.display = "block";
+    }
+    else
+    {
+        document.getElementById("Shela" + Index).style.display = "block";
+
+    }
+
+
+  
 }
