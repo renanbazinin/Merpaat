@@ -1,4 +1,4 @@
-﻿
+
       var btn = document.getElementById("mybtn");
 
 if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -13,6 +13,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 var mydata = JSON.parse(data);
 var Problems = JSON.parse(TheProblems);
 var HText = "";
+//התלונות
 for (var i = 0; i < Problems.Tlonot.length; i++) {
     HText += "<div id ='ck-button'><label><input class='picktlon' id='Tlonbtn" + i + "' type ='checkbox'><span>";
     HText += Problems.Tlonot[i].Tlon;
@@ -20,13 +21,18 @@ for (var i = 0; i < Problems.Tlonot.length; i++) {
 }
 
 HText += "<div><button style='background-color:#4c7aaf' class='picktlon' id='Tlonbtn-1' type ='button' onclick='First(0)'>התחל</button></div>";
+HText += "<div class='Shela' id='TheFirst'style='display:block'>";
+HText += "<input type='text' style='margin-top: 1.55%;width: 100px; ' placeholder ='פירוט נוסף' value = '' >";
+
+HText += "</div>"
+
 for (var i = 0; i < mydata.Shelot.length; i++) {
  
     HText += "<div class='Shela' id='Shela" + i + "'>";
 
     HText += "<div class='textShela' id ='textShela'>מלווה ב"+mydata.Shelot[i].shela + "?</div>";
     
-    HText += "<button class='btncheck' id='melo' type ='button' onclick='GlobalAdd(" + (i) + ",1);AddToArray(" + (i) + ",1)'>";
+    HText += "<button class='btncheck' id='melo' type ='button' onclick='GlobalAdd(" + (i) + ",1)'>";
     HText += "מלווה"
     HText += "</button>";
 
@@ -39,17 +45,17 @@ for (var i = 0; i < mydata.Shelot.length; i++) {
     }
     else
     {
-        HText += "<input type='number' name='quantity' min='37.5' max='44.0' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val+" + i + "'>";
+        HText += "<input type='number' name='quantity' min='37.5' value = '38.3' max='44.0' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val+" + i + "' step='0.1'>";
     }
 
 
-    HText += "<button class='btncheck' id='shol' type ='button' onclick='GlobalAdd(" + (i) + ",0);AddToArray(" + (i) + ",0)' >";
+    HText += "<button class='btncheck' id='shol' type ='button' onclick='GlobalAdd(" + (i) + ",0)' >";
     HText += "שולל"
     HText += "</button>";
 
     //HText += "</div>";
 
-    HText += "<div><button class='btncheck' id='skip' type ='button' onclick='GlobalAdd(" + (i) + ",-1);AddToArray(" + (i) + ",-1)'>";
+    HText += "<div><button class='btncheck' id='skip' type ='button' onclick='GlobalAdd(" + (i) + ",-1)'>";
     HText += "דלג"
     HText += "</button></div></div>"
 }
@@ -81,7 +87,11 @@ function AddToArray(Index, kind) {
         ana[Index] = "skip";
 }
 function IsShelaExsit(Index) {
-    if (mydata.Shelot[Index].Pre != "0" && ana[Index - 1] == "melo") {
+    
+    console.log("Index  → "+(Index-1))
+    console.log("ana : " + ana.toString())
+
+    if (mydata.Shelot[Index].Pre === mydata.Shelot[Index-1].shela && ana[Index - 1] === "melo") {
         return true;
     } else if (mydata.Shelot[Index].Pre != "0")
         return false;
@@ -106,6 +116,7 @@ function First() {
 
 
 function GlobalAdd(Index, kind) {
+    AddToArray(Index, kind);
     Index++;
     if (Index < mydata.Shelot.length) {
         //  mydata.Shelot[i].shela    // שאלה לפי אינדקס
@@ -123,10 +134,7 @@ function GlobalAdd(Index, kind) {
 
         var TheShela = mydata.Shelot[Index].shela;
 
-        console.log("ALL ana " + ana.toString());
 
-
-        console.log("TheShela: " + TheShela + "AndsheExist? " + IsShelaExsit(Index))
         if (IsShelaExsit(Index)) {
 
             document.getElementById("Shela" + (Index)).style.display = "block";
