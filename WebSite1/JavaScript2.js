@@ -227,7 +227,8 @@ function CreateAnaText() {
             var Shol = "שולל- ";
             for (var i = 0; i < mydata.Shelot.length; i++) {
                 
-                if (ana[i] != "" && mydata.Shelot[i].Tlon[0] == DataTlonot[w]) {
+                //alert("shela " + mydata.Shelot[i].shela + "true: " + mydata.Shelot[i].Tlon[0].includes(DataTlonot[w]))
+                if (ana[i] != "" && mydata.Shelot[i].Tlon.includes( DataTlonot[w]) == true) {
                     if (ana[i] == "melo") {
                         if (document.getElementById("Val"+i).value=="") {
                             Mel += " " + mydata.Shelot[i].shela + ", ";
