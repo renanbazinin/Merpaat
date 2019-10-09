@@ -20,12 +20,12 @@ for (var i = 0; i < Problems.Tlonot.length; i++) {
     HText += "</span></button></label></div>";
 }
 
-HText += "<div><button style='background-color:#4c7aaf' class='picktlon' id='Tlonbtn-1' type ='button' onclick='First(0)'>התחל</button></div>";
+
 HText += "<div class='Shela' id='TheFirst'style='display:block'>";
-HText += "<input type='text' style='margin-top: 1.55%;width: 100px; ' placeholder ='פירוט נוסף' value = '' >";
-
+HText += 'פרופיל:<select id="profiles"><option id="97" value="97">97</option>  <option id="82" value="82">82</option>   <option id="72" value="72">72</option>  <option id="64" value="64">64</option>  <option id="45" value="45">45</option>  </select>';
+HText += "רגישות לתרופות<input type='text' style='margin-top: 1.55%;width: 150px; ' placeholder ='פירוט רגישות לתרופות' value = '' id='DrugAler' value=''>";
 HText += "</div>"
-
+HText += "<div><button style='background-color:#4c7aaf' class='picktlon' id='Tlonbtn-1' type ='button' onclick='First(0)'>התחל</button></div>";
 for (var i = 0; i < mydata.Shelot.length; i++) {
  
     HText += "<div class='Shela' id='Shela" + i + "'>";
@@ -111,7 +111,10 @@ function IsShelaExsit(Index) {
 
 
 function First() {
+    document.getElementById("TheFirst").style.display = "none";
     document.getElementById("Shela" + 0).style.display = "block";
+
+    
 }
 
 
@@ -166,9 +169,15 @@ function GlobalAdd(Index, kind) {
                 Shol += " " + mydata.Shelot[i].shela;
 
         }
+        
 
+        document.getElementById("anam").innerHTML = "פרופיל "+document.getElementById("profiles").value;
+        if (document.getElementById("DrugAler").value == "") {
+            document.getElementById("anam").innerHTML += " לא ידועה רגישות לתרופות ";
+        }else
+            document.getElementById("anam").innerHTML += "רגישות ל"+document.getElementById("DrugAler").value;
 
-        document.getElementById("anam").innerHTML = Mel +"\n\n" +Shol;
+        document.getElementById("anam").innerHTML += "\n"+Mel +"\n\n" +Shol;
 
     }
 }
