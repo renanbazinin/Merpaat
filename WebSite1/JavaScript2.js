@@ -37,15 +37,15 @@ for (var i = 0; i < mydata.Shelot.length; i++) {
     HText += "</button>";
 
     if (mydata.Shelot[i].type == "amount") {
-        HText += "<input type='number' name='quantity' min='1' max='25' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val+" + i + "'>";
+        HText += "<input type='number' name='quantity' min='1' max='25' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val" + i + "'>";
     }
     else if (mydata.Shelot[i].type == "check") {
-        HText += "<input type='text' style='margin-top: 1.55%;width: 100px; ' placeholder ='פירוט נוסף' id='Val+"+i+"' >";
+        HText += "<input type='text' style='margin-top: 1.55%;width: 100px; ' placeholder ='פירוט נוסף' id='Val"+i+"' >";
         
     }
     else if (mydata.Shelot[i].type == "num")
     {
-        HText += "<input type='number' name='quantity' min='37.5' value = '38.3' max='44.0' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val+" + i + "' step='0.1'>";
+        HText += "<input type='number' name='quantity' min='37.5' value = '38.3' max='44.0' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val" + i + "' step='0.1'>";
     }
 
 
@@ -228,8 +228,14 @@ function CreateAnaText() {
             for (var i = 0; i < mydata.Shelot.length; i++) {
                 
                 if (ana[i] != "" && mydata.Shelot[i].Tlon[0] == DataTlonot[w]) {
-                    if (ana[i] == "melo")
-                        Mel += " " + mydata.Shelot[i].shela + ", ";
+                    if (ana[i] == "melo") {
+                        if (document.getElementById("Val"+i).value=="") {
+                            Mel += " " + mydata.Shelot[i].shela + ", ";
+                        }
+                        else
+                            Mel += " " + mydata.Shelot[i].shela + "- " + document.getElementById("Val" + i).value;
+                    }
+
                     else if (ana[i] == "shol")
                         Shol += " " + mydata.Shelot[i].shela + ", ";
                     ana[i] = "";
