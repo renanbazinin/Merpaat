@@ -217,15 +217,17 @@ function GlobalAdd(Index, kind) {
     }
 }
 function CreateAnaText() {
-    var text="\n";
+    var text="";
     for (var w = 0; w < DataTlonot.length; w++) {
         //alert("tlon " + DataTlonot[w] + "text: " + text);
         if (document.getElementById("Tlonbtn" + w).checked) {
-            text += "החייל מתלונן על  " + DataTlonot[w];
+            text += "\n";
+            text += " החייל מתלונן על  " + DataTlonot[w] + " ";
             var Mel = "מלווה ב- ";
             var Shol = "שולל- ";
             for (var i = 0; i < mydata.Shelot.length; i++) {
-                if (ana[i] != "") {
+                
+                if (ana[i] != "" && mydata.Shelot[i].Tlon[0] == DataTlonot[w]) {
                     if (ana[i] == "melo")
                         Mel += " " + mydata.Shelot[i].shela + ", ";
                     else if (ana[i] == "shol")
