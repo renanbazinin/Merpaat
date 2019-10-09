@@ -1,4 +1,4 @@
-
+﻿
       var btn = document.getElementById("mybtn");
 
 if (window.File && window.FileReader && window.FileList && window.Blob) {
