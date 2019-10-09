@@ -43,7 +43,7 @@ for (var i = 0; i < mydata.Shelot.length; i++) {
         HText += "<input type='text' style='margin-top: 1.55%;width: 100px; ' placeholder ='פירוט נוסף' id='Val+"+i+"' >";
         
     }
-    else
+    else if (mydata.Shelot[i].type == "num")
     {
         HText += "<input type='number' name='quantity' min='37.5' value = '38.3' max='44.0' style='margin-top: 1.55%;width: 52px; ' placeholder ='מספר' id='Val+" + i + "' step='0.1'>";
     }
@@ -111,8 +111,21 @@ function IsShelaExsit(Index) {
 
 
 function First() {
-    document.getElementById("TheFirst").style.display = "none";
-    document.getElementById("Shela" + 0).style.display = "block";
+    var flag = true;
+    for (var i = 0; i < DataTlonot.length; i++) {
+        if (document.getElementById("Tlonbtn"+i).checked) {
+            flag = false;
+        }
+
+    }
+    if (flag) {
+        alert("לא נבחרה תלונה")
+
+    }
+    else {
+        document.getElementById("TheFirst").style.display = "none";
+        document.getElementById("Shela" + 0).style.display = "block";
+    }
 
     
 }
@@ -161,14 +174,7 @@ function GlobalAdd(Index, kind) {
         var Mel = "מלווה-";
         var Shol = "שולל-";
 
-        for (var i = 0; i < mydata.Shelot.length; i++) {
-            console.log("Shela " + mydata.Shelot[i].shela + " And chose: " + ana[i]);
-            if (ana[i] == "melo")
-                Mel += " " + mydata.Shelot[i].shela;
-            else if(ana[i] == "shol")
-                Shol += " " + mydata.Shelot[i].shela;
 
-        }
         
 
         document.getElementById("anam").innerHTML = "פרופיל "+document.getElementById("profiles").value;
@@ -176,9 +182,63 @@ function GlobalAdd(Index, kind) {
             document.getElementById("anam").innerHTML += " לא ידועה רגישות לתרופות ";
         }else
             document.getElementById("anam").innerHTML += "רגישות ל "+document.getElementById("DrugAler").value;
+        ///mydata.Shelot[i].Tlon[0] Main tlonoa
+        var DataTlonotChecked = new Array(Problems.Tlonot.length);
+        for (var i = 0; i < DataTlonotChecked.length; i++) {
+            if (document.getElementById("Tlonbtn"+i).checked)
+                DataTlonotChecked[i] = "checked";
+        }
 
-        document.getElementById("anam").innerHTML += "\n"+Mel +"\n\n" +Shol;
+       // for (var i = 0; i < mydata.Shelot.length; i++) {
+
+            //if (ana[i] != "") {
+            //    var Main = -1;
+            //    for (var w = 0;  w< Problems.Tlonot.length; w++) {
+            //        if (mydata.Shelot[i].Tlon[0] == document.getElementById("Tlonbtn" + w).checked) {
+            //            Main = w;
+            //            w=999999;
+            //        }
+            //    }
+
+            //}
+
+
+            //console.log("Shela " + mydata.Shelot[i].shela + " And chose: " + ana[i]);
+            //if (ana[i] == "melo")
+            //    Mel += " " + mydata.Shelot[i].shela;
+            //else if (ana[i] == "shol")
+            //    Shol += " " + mydata.Shelot[i].shela;
+
+        //}
+        var textfortext = CreateAnaText();
+
+        document.getElementById("anam").innerHTML += textfortext;
 
     }
+}
+function CreateAnaText() {
+    var text="\n";
+    for (var w = 0; w < DataTlonot.length; w++) {
+        if (document.getElementById("Tlonbtn" + w).checked) {
+            text += "החייל מתלונן על  " + DataTlonot[w];
+            var Mel = "מלווה ב- ";
+            var Shol = "שולל- ";
+            for (var i = 0; i < mydata.Shelot.length; i++) {
+                if (ana[i] != "") {
+                    if (ana[i] == "melo")
+                        Mel += " " + mydata.Shelot[i].shela + ", ";
+                    else if (ana[i] == "shol")
+                        Shol += " " + mydata.Shelot[i].shela + ", ";
+                    ana[i] = "";
+                }
+
+            }
+            text += Mel + "\n" + Shol;
+        }
+    }
+
+
+
+    return text;
 }
 
