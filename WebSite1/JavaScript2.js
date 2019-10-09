@@ -222,7 +222,7 @@ function CreateAnaText() {
         //alert("tlon " + DataTlonot[w] + "text: " + text);
         if (document.getElementById("Tlonbtn" + w).checked) {
             text += "\n";
-            text += "החייל מתלונן על" + DataTlonot[w] + " ";
+            text += "החייל מתלונן על " + DataTlonot[w] + " ";
             var Mel = "מלווה ב- ";
             var Shol = "שולל- ";
             for (var i = 0; i < mydata.Shelot.length; i++) {
