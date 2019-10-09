@@ -175,7 +175,7 @@ function GlobalAdd(Index, kind) {
         if (document.getElementById("DrugAler").value == "") {
             document.getElementById("anam").innerHTML += " לא ידועה רגישות לתרופות ";
         }else
-            document.getElementById("anam").innerHTML += "רגישות ל"+document.getElementById("DrugAler").value;
+            document.getElementById("anam").innerHTML += "רגישות ל "+document.getElementById("DrugAler").value;
 
         document.getElementById("anam").innerHTML += "\n"+Mel +"\n\n" +Shol;
 
