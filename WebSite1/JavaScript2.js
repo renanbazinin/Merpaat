@@ -233,7 +233,7 @@ function CreateAnaText() {
                             Mel += " " + mydata.Shelot[i].shela + ", ";
                         }
                         else
-                            Mel += " " + mydata.Shelot[i].shela + "- " + document.getElementById("Val" + i).value;
+                            Mel += " " + mydata.Shelot[i].shela + "- " + document.getElementById("Val" + i).value+", ";
                     }
 
                     else if (ana[i] == "shol")
