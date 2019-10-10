@@ -1,4 +1,4 @@
-﻿export const data = {
+﻿const data = {
     Shelot: [{"shela": "חבלה", type: "check", Tlon: ["כאבי ראש", "כאבי בטן", "כאבי גרון"], Pre: ""},
         {shela: "סחרחורת", type: "check", Tlon: ["כאבי ראש", "כאבי בטן", "כאבי גרון"], Pre: "0"},
         {shela: "בחילות", type: "check", Tlon: ["כאבי ראש", "כאבי בטן"], Pre: "0"},
@@ -22,7 +22,7 @@
 };
 
 
-export const TheProblems = {
+const TheProblems = {
     Tlonot: [{Tlon: "כאבי ראש"},
         {Tlon: "כאבי בטן"},
         {Tlon: "כאבי גרון"}
