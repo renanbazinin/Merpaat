@@ -1,10 +1,5 @@
 ﻿var HText = "";
 //התלונות
-for (let i = 0; i < TheProblems.Tlonot.length; i++) {
-    HText += "<div id ='ck-button'><label><input class='picktlon' id='Tlonbtn" + i + "' type ='checkbox'><span>";
-    HText += TheProblems.Tlonot[i].Tlon;
-    HText += "</span></button></label></div>";
-}
 
 
 HText += "<div class='Shela' id='TheFirst'style='display:block'>";
@@ -45,11 +40,6 @@ for (let i = 0; i < data.Shelot.length; i++) {
 }
 
 document.getElementById("all").innerHTML += HText;
-
-var anamneza = "";
-var melobtn = document.getElementById("melo");
-var skipbtn = document.getElementById("skip");
-var sholbtn = document.getElementById("shol");
 
 var ana = new Array(data.Shelot.length);
 for (var i = 0; i < ana.length; i++) {
