@@ -8,10 +8,32 @@
     <div id="all" style="text-align:center">
       <div id="mainTlunotComponent">
         <div raFor="let i = 0; i < TheProblems.Tlonot.length; i++">
-          <label class="ck-button">
-            <input id="Tlonbtn{{ i }}" type="checkbox" />
-            <span>{{ TheProblems.Tlonot[i].Tlon }}</span>
+          <label for="Tlonbtn{{ i }}" class="ck-button">
+            {{ TheProblems.Tlonot[i].Tlon }}
           </label>
+          <input id="Tlonbtn{{ i }}" onchange="onChangeTlonCheckbox()" type="checkbox" />
+        </div>
+      </div>
+
+      <div id="questionsComponent">
+        <div class="questionTest" id="TheFirst" style="display:block">
+          <label for="profiles">פרופיל:</label>
+          <select id="profiles">
+            <option id="97" value="97">97</option>
+            <option id="82" value="82">82</option>
+            <option id="72" value="72">72</option>
+            <option id="64" value="64">64</option>
+            <option id="45" value="45">45</option>
+          </select>
+          <label for="DrugAler">רגישות לתרופות</label>
+          <input
+            type="text"
+            id="DrugAler"
+            class="drug-aler"
+            placeholder="פירוט רגישות לתרופות"
+            value=""
+          />
+          <button onclick="First()">התחל</button>
         </div>
       </div>
     </div>
@@ -20,7 +42,7 @@
 
     <script src="modules/ra/raFor/index.js"></script>
     <script src="configuraion.js"></script>
-    <script src="mainTlunot/mainTlunot.component.js"></script>
+    <script src="components/mainTlunot/mainTlunot.component.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
