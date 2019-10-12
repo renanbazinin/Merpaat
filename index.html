@@ -1,27 +1,26 @@
 ﻿<html>
-<head>
-    <meta http-equiv='Content-type' content='text/html;charset=UTF-8'>
-    <link href="StyleSheet.css" rel="stylesheet"/>
-</head>
+  <head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <link href="StyleSheet.css" rel="stylesheet" />
+  </head>
 
-<body dir="rtl">
-
-<div id="all" style="text-align:center">
-    <div id="mainTlunotComponent">
-        <div raFor="const i in TheProblems.Tlonot">
-            <label class='ck-button'>
-                <input id='Tlonbtn' type='checkbox'>
-                <span>asd</span>
-            </label>
+  <body dir="rtl">
+    <div id="all" style="text-align:center">
+      <div id="mainTlunotComponent">
+        <div raFor="let i = 0; i < TheProblems.Tlonot.length; i++">
+          <label class="ck-button">
+            <input id="Tlonbtn{{ i }}" type="checkbox" />
+            <span>{{ TheProblems.Tlonot[i].Tlon }}</span>
+          </label>
         </div>
+      </div>
     </div>
-</div>
 
-<div id="TheOutput"><textarea id="anam"> </textarea></div>
+    <div id="TheOutput"><textarea id="anam"> </textarea></div>
 
-<script src="configuraion.js"></script>
-<script src="mainTlunot/mainTlunot.component.js"></script>
-<script src="main.js"></script>
-</body>
-
+    <script src="modules/ra/raFor/index.js"></script>
+    <script src="configuraion.js"></script>
+    <script src="mainTlunot/mainTlunot.component.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
