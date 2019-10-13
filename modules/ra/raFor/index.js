@@ -1,3 +1,7 @@
+RegExp.quote = function(str) {
+    return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+};
+
 function searchByAttribute(attributeKey, fatherElement, logic) {
     for (const child of fatherElement.children) {
         if (child.children && child.children.length) {
@@ -20,8 +24,10 @@ function raForLogic(child, attributeValue) {
     const oldInnerHtml = child.innerHTML;
     child.innerHTML = "";
     const matchsArr = oldInnerHtml.match(/{{(.*)}}/g);
+
     matchsArr.forEach(match => {
-        match = match.replace(/&quot;/g, '"');
+        const quotRegex = new RegExp('&quot', 'g');
+        match = match.replace(quotRegex, '"');
     });
 
     console.log(matchsArr);
@@ -40,7 +46,7 @@ function raForLogic1(child, oldInnerHtml, matchsArr, i) {
         stringToValue[match] = eval(match.slice(2, -2));
     });
     for (let [key, value] of Object.entries(stringToValue)) {
-        const regex = new RegExp(key, 'g');
+        const regex = new RegExp(RegExp.quote(key), 'g');
         oldInnerHtml = oldInnerHtml.replace(regex, value);
     }
     child.innerHTML += oldInnerHtml;
