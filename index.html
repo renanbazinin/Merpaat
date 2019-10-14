@@ -5,23 +5,28 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/main/main.component.css">
     <link rel="stylesheet" href="components/main/complains/complains.component.css">
+    <link rel="stylesheet" href="components/main/questions-container/question/question.component.css">
+    <link rel="stylesheet" href="components/main/questions-container/questions-navigation/questions-navigation.css">
+    <link rel="stylesheet" href="components/main/questions-container/questions-container.component.css">
     <script src="modules/ra/raFor/index.js" defer></script>
     <script src="configuration.js" defer></script>
     <script src="components/main/complains/complains.component.js" defer></script>
     <script src="components/main/main.component.js" defer></script>
+    <script src="components/main/questions-container/question/question.component.js" defer></script>
+    <script src="components/main/questions-container/questions-navigation/questions-navigation.js" defer></script>
+    <script src="components/main/questions-container/questions-container.component.js" defer></script>
 </head>
 
 <body dir="rtl">
 <main id="mainComponent">
     <complains id="complainsComponent">
-        <ul raFor="let i = 0; i < data.complains.length; i++" class="complains-list">
-            <li>
+        <span class="complain-title">תלונות עיקריות</span>
+        <div raFor="let i = 0; i < data.complains.length; i++" class="complains-list">
+            <label for="complain{{ i }}" class="complain-item">
                 <input id="complain{{ i }}" type="checkbox"/>
-                <label for="complain{{ i }}">
-                    {{ data.complains[i].complainText }}
-                </label>
-            </li>
-        </ul>
+                {{ data.complains[i].complainText }}
+            </label>
+        </div>
     </complains>
     <questions-container id="questionsContainerComponent">
         <question id="question">

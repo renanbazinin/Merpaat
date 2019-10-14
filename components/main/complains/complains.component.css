@@ -1,9 +1,28 @@
 complains {
+    display: flex;
+    flex-direction: column;
     border-left: 1px solid black;
 }
 
+.complain-title {
+    padding: 10px;
+
+}
+
 .complains-list {
-    list-style-type: none;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0;
+}
+
+.complains-list > .complain-item{
+    padding: 10px;
+    transition: .3s;
+    cursor: pointer;
+
+}
+
+.complains-list > .complain-item:hover {
+    background: #f5f5f5;
 }
