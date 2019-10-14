@@ -12,8 +12,8 @@
 </head>
 
 <body dir="rtl">
-<div id="mainComponent">
-    <div id="complainsComponent">
+<main id="mainComponent">
+    <complains id="complainsComponent">
         <ul raFor="let i = 0; i < data.complains.length; i++" class="complains-list">
             <li>
                 <input id="complain{{ i }}" type="checkbox"/>
@@ -22,10 +22,11 @@
                 </label>
             </li>
         </ul>
-    </div>
-    <div id="questionsComponent">
-        dfgdgf
-    </div>
-</div>
+    </complains>
+    <questions-container id="questionsContainerComponent">
+
+
+    </questions-container>
+</main>
 </body>
 </html>
