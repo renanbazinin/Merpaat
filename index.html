@@ -1,4 +1,4 @@
-﻿<html>
+﻿<html lang="he">
 <head>
     <title>ra</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="components/main/main.component.css">
     <link rel="stylesheet" href="components/main/complains/complains.component.css">
     <script src="modules/ra/raFor/index.js" defer></script>
-    <script src="configuraion.js" defer></script>
+    <script src="configuration.js" defer></script>
     <script src="components/main/complains/complains.component.js" defer></script>
     <script src="components/main/main.component.js" defer></script>
 </head>
@@ -24,8 +24,21 @@
         </ul>
     </complains>
     <questions-container id="questionsContainerComponent">
-
-
+        <question id="question">
+            <span class="question-text">{{ currentQuestion }}</span>
+            <label for="extraDetails">
+                פירוט נוסף
+            </label>
+            <textarea id="extraDetails"></textarea>
+            <div class="answer-buttons-container">
+                <button id="accompanied">כן</button>
+                <button id="unaccompanied">לא</button>
+            </div>
+        </question>
+        <questions-navigation id="questions-navigation">
+            <button>הקודם</button>
+            <button>הבא (דלג)</button>
+        </questions-navigation>
     </questions-container>
 </main>
 </body>
