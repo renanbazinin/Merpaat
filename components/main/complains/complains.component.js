@@ -1,2 +1,2 @@
-const mainComponent = document.getElementById("complainsComponent");
-raFor(mainComponent);
+const complainsComponent = document.getElementById("complainsComponent");
+raFor(complainsComponent);

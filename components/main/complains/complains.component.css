@@ -1,7 +1,6 @@
 complains {
     display: flex;
     flex-direction: column;
-    border-left: 1px solid black;
 }
 
 .complain-title {
@@ -20,7 +19,6 @@ complains {
     padding: 10px;
     transition: .3s;
     cursor: pointer;
-
 }
 
 .complains-list > .complain-item:hover {
