@@ -1,17 +1,18 @@
 ﻿const data = {
-    complains: [
-        {
+    complains: {
+        1: {
             complainText: "כאבי ראש",
             questions: []
         },
-        {
+        2: {
             complainText: "כאבי בטן",
             questions: []
         },
-        {
+        3: {
             complainText: "כאבי גרון",
             questions: []
-        }],
+        }
+    },
     questions: [
         {
             questionText: "חבלה",

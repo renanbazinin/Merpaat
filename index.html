@@ -22,10 +22,14 @@
 <main id="mainComponent">
     <complains id="complainsComponent">
         <span class="complain-title">תלונות עיקריות</span>
-        <div raFor="let i = 0; i < data.complains.length; i++" class="complains-list">
-            <label for="complain{{ i }}" class="complain-item">
-                <input id="complain{{ i }}" type="checkbox"/>
-                {{ data.complains[i].complainText }}
+        <div raFor="let [key, value] of Object.entries(data.complains)" class="complains-list">
+            <input id="complain-{{ key }}"
+                   type="radio"
+                   name="complain"
+                   class="complain-input"
+                   onclick="onComplainClick(this)"/>
+            <label for="complain-{{ key }}" class="complain-label">
+                {{ value.complainText }}
             </label>
         </div>
     </complains>

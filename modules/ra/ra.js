@@ -1,6 +1,7 @@
-function replaceBracetsWithRealValue(elementHtmlStr, i) {
+function replaceBracetsWithRealValue(elementHtmlStr) {
+    let newElementHtmlStr = elementHtmlStr;
     const bracetsRegex = new RegExp("{{(.*)}}", "g");
-    const matchsArr = elementHtmlStr.match(bracetsRegex);
+    const matchsArr = newElementHtmlStr.match(bracetsRegex);
 
     matchsArr.forEach(match => {
         const quotRegex = new RegExp("&quot", "g");
@@ -12,9 +13,10 @@ function replaceBracetsWithRealValue(elementHtmlStr, i) {
     });
     for (let [key, value] of Object.entries(stringToValue)) {
         const regex = new RegExp(RegExp.quote(key), "g");
-        elementHtmlStr = elementHtmlStr.replace(regex, value);
+        newElementHtmlStr = newElementHtmlStr.replace(regex, value);
     }
-    return elementHtmlStr;
+
+    return newElementHtmlStr;
 }
 
 function ra(element) {

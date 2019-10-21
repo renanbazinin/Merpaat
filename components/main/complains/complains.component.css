@@ -15,12 +15,23 @@ complains {
     margin: 0;
 }
 
-.complains-list > .complain-item{
+.complains-list > .complain-label {
     padding: 10px;
     transition: .3s;
     cursor: pointer;
+
 }
 
-.complains-list > .complain-item:hover {
+.complains-list > .complain-label:hover {
     background: #f5f5f5;
 }
+
+.complain-input {
+    display: none;
+}
+
+.complain-input:checked + label {
+    background: #202124 !important;
+    color: white;
+}
+
