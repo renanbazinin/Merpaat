@@ -20,5 +20,8 @@ function replaceBracetsWithRealValue(elementHtmlStr) {
 }
 
 function ra(element) {
-    element.innerHTML = replaceBracetsWithRealValue(element.innerHTML);
+    const raService = RaService.getInstance();
+    raService.addIfNotExist(element);
+    const elementHTML = raService.getElementHTML(element);
+    element.innerHTML = replaceBracetsWithRealValue(elementHTML);
 }

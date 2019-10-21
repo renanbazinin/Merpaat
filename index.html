@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="components/main/questions-container/question/question.component.css">
     <link rel="stylesheet" href="components/main/questions-container/questions-navigation/questions-navigation.css">
     <link rel="stylesheet" href="components/main/questions-container/questions-container.component.css">
+    <script src="modules/ra/ra.service.js" defer></script>
     <script src="modules/ra/ra.js" defer></script>
     <script src="modules/ra/raFor/index.js" defer></script>
+    <script src="services/questions.service.js" defer></script>
     <script src="configuration.js" defer></script>
     <script src="components/main/complains/complains.component.js" defer></script>
     <script src="components/main/main.component.js" defer></script>
@@ -23,12 +25,12 @@
     <complains id="complainsComponent">
         <span class="complain-title">תלונות עיקריות</span>
         <div raFor="let [key, value] of Object.entries(data.complains)" class="complains-list">
-            <input id="complain-{{ key }}"
+            <input id="{{ key }}"
                    type="radio"
                    name="complain"
                    class="complain-input"
                    onclick="onComplainClick(this)"/>
-            <label for="complain-{{ key }}" class="complain-label">
+            <label for="{{ key }}" class="complain-label">
                 {{ value.complainText }}
             </label>
         </div>
